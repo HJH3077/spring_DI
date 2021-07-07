@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- NonDI_MyProcess process = new NonDI_MyProcess(); -->
+	<bean id="process" class="com.ict.ex03.DI_MyProcess"></bean>
+	
+	<bean id="process2" class="com.ict.ex03.DI_MyProcess">
+		<!-- ref는 기존의 값을 꺼내서 쓰는 것 / value는 setter처럼 값을 넣는 것 -->
+		<constructor-arg name="name" value="태권브이"></constructor-arg>
+		<constructor-arg name="age" value="1983"></constructor-arg>
+	</bean>
+	
+	<bean id="process3" class="com.ict.ex03.DI_MyProcess">
+		<property name="name" value="파란해골13호"></property>
+		<property name="age" value="1900"></property>
+	</bean>
+</beans>

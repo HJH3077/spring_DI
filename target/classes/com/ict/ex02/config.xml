@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 스프링 컨테이너에게 정보를 제공하는 역할을 하는 설정 정보 파일 -->
+	<!-- 1. 객체 생성 -->
+	<!-- 자바식 : OracleDAO oracleDAO = new OracleDAO(); -->
+	<!-- 자바식 : MySQLDAO oracleDAO = new MySQLDAO(); -->
+	<bean id="oracleDAO" class="com.ict.ex02.OracleDAO"></bean> <!-- 이게 자바식의 객체 생성과 같음 -->
+	<bean id="mysqlDAO" class="com.ict.ex02.MySQLDAO"></bean> <!-- 아이디 첫 글자는 무조건 소문자 -->
+
+	<!-- 2. 의존성 주입(DI), 의존성을 이어주는 행위 -->
+	<bean id="service" class="com.ict.ex02.Service">
+		<!-- 1) 생성자를 이용하는 방법 -->
+		<!-- name에 생성자의 인자 값, ref or value -->
+		<!-- 빈 객체를 참조하려면 ref이고, 실제 값을 넣으려면 value이다. -->
+		<!-- 로그인시 아이디 비밀번호를 넣는 경우같은 특이한 경우가 value로 값을 직접넣고 나머진 ref -->
+		<!-- <constructor-arg name="변수이름" ref="" 또는 value=""></constructor-arg> -->
+		<!-- <constructor-arg name="dao" ref="mysqlDAO"></constructor-arg> -->
+
+		<!-- 2) setter를 이용하는 방법 -->
+		<!-- setter를 만들어 둬야지 오류가 발생안함 -->
+		<!-- <property name="setter 변수이름" ref="" 또는 value=""></property> -->
+		<property name="dao" ref="mysqlDAO"></property>
+	</bean>
+</beans>
